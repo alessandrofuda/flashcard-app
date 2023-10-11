@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "tailwindcss": "^1",
     "uuid": "^3.3.2",
     "vue": "^2.6.10",
-    "vue-router": "3.6.5"
+    "vue-router": "3.6.5",
+    "vue-tailwind": "^2.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",

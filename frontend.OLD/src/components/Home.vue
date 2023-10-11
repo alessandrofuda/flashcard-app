@@ -1,41 +1,34 @@
 <template>
-  <div id="app">
-    <main class="page-container">
+  <div class="home">
+    <header class="page-header">
+      <div class="top-message">
+        <span class="text">
+          Vue.js project
+        </span>
+      </div>
+      <!-- end of top message -->
+      <h1 class="title">Flashcard App</h1>
 
-      <router-link class="my-5" to="/login">Login</router-link>
-
-      <header class="page-header">
-        <div class="top-message">
-          <span class="text">
-            Vue.js project
-          </span>
-        </div>
-        <!-- end of top message -->
-        <h1 class="title">Flashcard App</h1>
-
-        <Search @searchTrigger="searchCards"></Search>
-
-      </header>
-      <AddNewCard @addCardTrigger="addCard"></AddNewCard>
-      <p class="likecounter">You have liked {{ likes }} cards so far</p>
-      <ul class="cards-box">
-        <Card
-          v-for="card in filteredData"
-          :key="card.id"
-          :card="card"
-          @likeTrigger="recalculateLikes"
-          @deleteTrigger="deleteCard"
-        ></Card>
-      </ul>
-      <!-- end of cards box -->
-    </main>
+      <Search @searchTrigger="searchCards"></Search>
+    </header>
+    <AddNewCard @addCardTrigger="addCard"></AddNewCard>
+    <p class="likecounter">You have liked {{ likes }} cards so far</p>
+    <ul class="cards-box">
+      <Card
+        v-for="card in filteredData"
+        :key="card.id"
+        :card="card"
+        @likeTrigger="recalculateLikes"
+        @deleteTrigger="deleteCard"
+      ></Card>
+    </ul>
+    <!-- end of cards box -->
   </div>
 </template>
-
 <script>
-import Search from "./components/Search";
-import AddNewCard from "./components/AddNewCard";
-import Card from "./components/Card";
+import Search from "./Search";
+import AddNewCard from "./AddNewCard";
+import Card from "./Card";
 
 const uuidv4 = require("uuid/v4");
 const colors = ["-orange", "-red", "-purple", "-blue", "-green"];
@@ -51,10 +44,8 @@ let cards = [
   },
   {
     id: uuidv4(),
-    front:
-      'Job interviewer: "And where would you see yourself in five years’ time Mr. Jeffries?"',
-    back:
-      'Mr. Jeffries: "Personally I believe my biggest weakness is in listening."',
+    front: "Job interviewer: 'And where would you see yourself in five years’ time Mr. Jeffries?'",
+    back: "Mr. Jeffries: 'Personally I believe my biggest weakness is in listening.'",
     flipped: false,
     liked: false,
     color: `${colors[Math.floor(Math.random() * colors.length)]}`
@@ -86,8 +77,7 @@ let cards = [
   {
     id: uuidv4(),
     front: "What is a closure? 😊",
-    back:
-      "A closure is an inner function that has access to the outer (enclosing) function's variables",
+    back: "A closure is an inner function that has access to the outer (enclosing) function's variables",
     flipped: false,
     liked: false,
     color: `${colors[Math.floor(Math.random() * colors.length)]}`
@@ -154,35 +144,25 @@ export default {
   }
 };
 </script>
-
 <style lang="sass">
 @import 'src/assets/sass/main.sass'
-
-.page-container
-  margin-left: auto
-  margin-right: auto
-  max-width: 1120px
-  padding-top: 1.5rem
-  padding-left: 1rem
-  padding-right: 1rem
-  overflow: hidden
 
 .top-message
   font-size: 0.8571rem
   text-align: left
   color: $muted
-  .text
+.text
     display: flex
     align-items: center
-  .icon
+.icon
     width: 20px
     fill: #ff4242
     margin-right: 9px
 
 .page-header
-  padding-bottom: 40px
-  border-bottom: 1px dashed #dedede
-  .title
+    padding-bottom: 40px
+    border-bottom: 1px dashed #dedede
+.title
     font-size: 2.286rem
     font-weight: $bold
     text-align: center
