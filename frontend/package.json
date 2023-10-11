@@ -2,7 +2,7 @@
   "name": "Flashcards",
   "description": "Simple Flashcard App built with Vue.js",
   "version": "1.0.0",
-  "author": "Rafał Wichowski - RAWIC",
+  "author": "Rafal Wichowski - RAWIC",
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -12,7 +12,8 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "uuid": "^3.3.2",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "3.6.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",

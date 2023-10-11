@@ -1,29 +1,21 @@
 <template>
   <div id="app">
     <main class="page-container">
+
+      <router-link class="my-5" to="/login">Login</router-link>
+
       <header class="page-header">
         <div class="top-message">
           <span class="text">
-            <svg
-              class="icon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 50 50"
-            >
-              <path
-                d="M24.85 10.126c2.018-4.783 6.628-8.125 11.99-8.125 7.223 0 12.425 6.179 13.079 13.543 0 0 .353 1.828-.424 5.119-1.058 4.482-3.545 8.464-6.898 11.503L24.85 48 7.402 32.165c-3.353-3.038-5.84-7.021-6.898-11.503-.777-3.291-.424-5.119-.424-5.119C.734 8.179 5.936 2 13.159 2c5.363 0 9.673 3.343 11.691 8.126z"
-              />
-            </svg>
-            First Vue.js project |
-            <a href="https://rawic.me" target="_blank" rel="noopener noreferrer"
-              >Rafał Wichowski</a
-            >
+            Vue.js project
           </span>
         </div>
         <!-- end of top message -->
-        <h1 class="title">Simple Flashcard App</h1>
+        <h1 class="title">Flashcard App</h1>
+
         <Search @searchTrigger="searchCards"></Search>
+
       </header>
-      <!-- end of page header -->
       <AddNewCard @addCardTrigger="addCard"></AddNewCard>
       <p class="likecounter">You have liked {{ likes }} cards so far</p>
       <ul class="cards-box">
@@ -41,90 +33,90 @@
 </template>
 
 <script>
-import Search from './components/Search';
-import AddNewCard from './components/AddNewCard';
-import Card from './components/Card';
+import Search from "./components/Search";
+import AddNewCard from "./components/AddNewCard";
+import Card from "./components/Card";
 
-const uuidv4 = require('uuid/v4');
-const colors = ['-orange', '-red', '-purple', '-blue', '-green'];
+const uuidv4 = require("uuid/v4");
+const colors = ["-orange", "-red", "-purple", "-blue", "-green"];
 
 let cards = [
   {
     id: uuidv4(),
-    front: 'Who would I like to work with? 🤔',
-    back: '10Clouds! 😎',
+    front: "Who would I like to work with?",
+    back: "10Clouds! 😎",
     flipped: false,
     liked: true,
-    color: `${colors[Math.floor(Math.random() * colors.length)]}`,
+    color: `${colors[Math.floor(Math.random() * colors.length)]}`
   },
   {
     id: uuidv4(),
     front:
-      'Job interviewer: "And where would you see yourself in five years’ time Mr. Jeffries?" 🤭',
+      'Job interviewer: "And where would you see yourself in five years’ time Mr. Jeffries?"',
     back:
-      'Mr. Jeffries: "Personally I believe my biggest weakness is in listening." 🤣',
+      'Mr. Jeffries: "Personally I believe my biggest weakness is in listening."',
     flipped: false,
     liked: false,
-    color: `${colors[Math.floor(Math.random() * colors.length)]}`,
+    color: `${colors[Math.floor(Math.random() * colors.length)]}`
   },
   {
     id: uuidv4(),
-    front: 'When do I have recruitment interview? ✔️',
-    back: 'Tomorrow 📅',
+    front: "When do I have recruitment interview?",
+    back: "Tomorrow",
     flipped: false,
     liked: false,
-    color: `${colors[Math.floor(Math.random() * colors.length)]}`,
+    color: `${colors[Math.floor(Math.random() * colors.length)]}`
   },
   {
     id: uuidv4(),
-    front: 'What is my main goal? 💻',
-    back: 'Learn something new and awesome! 🔥',
+    front: "What is my main goal? 💻",
+    back: "Learn something new and awesome! 🔥",
     flipped: false,
     liked: true,
-    color: `${colors[Math.floor(Math.random() * colors.length)]}`,
+    color: `${colors[Math.floor(Math.random() * colors.length)]}`
   },
   {
     id: uuidv4(),
-    front: 'Am I ready? 😱',
-    back: 'Hell no! 😂',
+    front: "Am I ready?",
+    back: "Hell no!",
     flipped: false,
     liked: false,
-    color: `${colors[Math.floor(Math.random() * colors.length)]}`,
+    color: `${colors[Math.floor(Math.random() * colors.length)]}`
   },
   {
     id: uuidv4(),
-    front: 'What is a closure? 😊',
+    front: "What is a closure? 😊",
     back:
       "A closure is an inner function that has access to the outer (enclosing) function's variables",
     flipped: false,
     liked: false,
-    color: `${colors[Math.floor(Math.random() * colors.length)]}`,
+    color: `${colors[Math.floor(Math.random() * colors.length)]}`
   },
   {
     id: uuidv4(),
-    front: 'Booyah! 🤩',
-    back: 'Used when someone is extremely overjoyed 🔥',
+    front: "Booyah!",
+    back: "Used when someone is extremely overjoyed",
     flipped: false,
     liked: false,
-    color: `${colors[Math.floor(Math.random() * colors.length)]}`,
+    color: `${colors[Math.floor(Math.random() * colors.length)]}`
   },
   {
     id: uuidv4(),
-    front: 'Who designed this app? ✏️',
-    back: 'Such a modest boy...',
+    front: "Who designed this app? ✏️",
+    back: "Such a modest boy...",
     flipped: false,
     liked: false,
-    color: `${colors[Math.floor(Math.random() * colors.length)]}`,
-  },
+    color: `${colors[Math.floor(Math.random() * colors.length)]}`
+  }
 ];
 
 export default {
-  name: 'app',
+  name: "app",
   data() {
     return {
       cards: cards,
-      searchWord: '',
-      likes: cards.filter((card) => card.liked).length,
+      searchWord: "",
+      likes: cards.filter(card => card.liked).length
     };
   },
   methods: {
@@ -135,7 +127,7 @@ export default {
       value ? this.likes++ : this.likes--;
     },
     deleteCard(id) {
-      this.cards = this.cards.filter((card) => {
+      this.cards = this.cards.filter(card => {
         if (card.id === id && card.liked) {
           this.likes--;
         }
@@ -144,27 +136,27 @@ export default {
     },
     addCard(data) {
       this.cards.unshift(data);
-    },
+    }
   },
   computed: {
     filteredData() {
-      return this.cards.filter((card) => {
+      return this.cards.filter(card => {
         return card.front
           .toLowerCase()
           .includes(this.searchWord.trim().toLowerCase());
       });
-    },
+    }
   },
   components: {
     Search,
     AddNewCard,
-    Card,
-  },
+    Card
+  }
 };
 </script>
 
 <style lang="sass">
-@import 'src/assets/sass/main.sass';
+@import 'src/assets/sass/main.sass'
 
 .page-container
   margin-left: auto

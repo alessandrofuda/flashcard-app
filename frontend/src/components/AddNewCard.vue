@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style scoped lang="sass">
-@import 'src/assets/sass/_variables.sass';
+@import 'src/assets/sass/_variables.sass'
 
 .addcard-box
   margin-top: 40px
